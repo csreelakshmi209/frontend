@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.exception.NoSuchEmployeeException;
+import com.model.Address;
 import com.model.DonationItem;
 import com.model.Employee;
 import com.service.IDonationItemService;
@@ -42,6 +43,14 @@ public class DonationItemController {
 			return re;
 		}
 		
+		//get  item by id
+		@GetMapping("/items/get/{itemId}")
+		public ResponseEntity<DonationItem> getdonationItemById(@PathVariable int itemId) {
+			DonationItem lcl = ditemService.getdonationItemById(itemId);
+			ResponseEntity<DonationItem> re = new ResponseEntity<DonationItem>(lcl, HttpStatus.OK);
+			return re;
+		}
+		
 		//update item
 		@PutMapping(path = "/item/update/{itemId}")
 		public ResponseEntity<DonationItem> updateDonationItem(@PathVariable("itemId") int itemId,@RequestBody DonationItem donationItem)   {
@@ -59,6 +68,8 @@ public class DonationItemController {
 			ResponseEntity<DonationItem> re = new ResponseEntity<DonationItem>(HttpStatus.OK);
 			return re;
 		}
+		
+		
 		
 		
 }

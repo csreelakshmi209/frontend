@@ -15,4 +15,6 @@ public interface IDonationItemService {
 	public DonationItem updateDonationItem(int itemId, DonationItem donationItem);
 
 	public DonationItem removeDonationItem(int itemId);
+
+	public DonationItem getdonationItemById(int itemId);
 }
