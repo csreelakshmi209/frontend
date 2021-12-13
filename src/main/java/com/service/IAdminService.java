@@ -15,7 +15,7 @@ public interface IAdminService {
 	
 	public Employee addEmployee(Employee employee) throws DuplicateEmployeeException, SQLException ;
 	public Employee modifyEmployee(int employeeId, Employee employee) throws NoSuchEmployeeException, Throwable;
-	public Employee removeEmployee(int employeeId, Employee employee) throws NoSuchEmployeeException;
+	public Employee removeEmployee(int employeeId) throws NoSuchEmployeeException;
 	public EmployeeDto findEmployeeById(int employeeId) throws NoSuchEmployeeException;
 	public Employee findEmployeeByName(String name) throws NoSuchEmployeeException;
 	public boolean approveDonation(DonationDistribution distribution);

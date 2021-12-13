@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -34,7 +35,20 @@ public class DonationItem implements Serializable {
 	// mapping to donation
 	@OneToOne(cascade = CascadeType.ALL)
 	private Donation donation;
+	
 
+	public Donation getDonation() {
+		return donation;
+	}
+
+	public void setDonation(Donation donation) {
+		this.donation = donation;
+	}
+
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "donor_id", referencedColumnName = "donor_id")
+	Donor donor;
 	// getters and setters
 
 	public int getItemId() {

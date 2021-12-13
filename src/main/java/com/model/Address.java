@@ -23,7 +23,7 @@ public class Address implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@Column(name="address_id",nullable=false)
+	@Column(name="address_id")
 	private int addressId;
 	@NotNull
 	private String city;

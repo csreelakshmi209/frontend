@@ -25,11 +25,11 @@ public class NeedyPeopleController {
 	NeedypeopleServiceImpl needyImpl;
 	
 	
-	//register needy person
-	@PostMapping("/login/add")
-    public  ResponseEntity<NeedyPeople> registerNeedyPerson(@Valid @RequestBody NeedyPeople person) throws NoSuchNeedyPeopleException{
-        
-        NeedyPeople p = needyImpl.registerNeedyPerson(person);
-        return new ResponseEntity<NeedyPeople>(person,HttpStatus.CREATED);
-    }
+//	//register needy person
+//	@PostMapping("/login/add")
+//    public  ResponseEntity<NeedyPeople> registerNeedyPerson(@Valid @RequestBody NeedyPeople person) throws NoSuchNeedyPeopleException{
+//        
+//        NeedyPeople p = needyImpl.registerNeedyPerson(person);
+//        return new ResponseEntity<NeedyPeople>(person,HttpStatus.CREATED);
+//    }
 }

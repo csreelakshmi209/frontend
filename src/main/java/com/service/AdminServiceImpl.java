@@ -12,6 +12,7 @@ import com.repository.AdminRepository;
 import com.dto.EmployeeDto;
 import com.exception.DuplicateEmployeeException;
 import com.exception.NoSuchEmployeeException;
+import com.model.Address;
 import com.model.DonationDistribution;
 import com.model.Employee;
 
@@ -39,6 +40,7 @@ public class AdminServiceImpl implements IAdminService {
 			emp.setEmail(employee.getEmail());
 			emp.setUsername(employee.getUsername());
 			emp.setPassword(employee.getPassword());
+			emp.setAddress(employee.getAddress());
 			adminRepo.save(employee);
 		}
 		return employee;
@@ -51,6 +53,8 @@ public class AdminServiceImpl implements IAdminService {
 
 		return e;
 	}
+	
+	
 
 	// update the employee details
 
@@ -74,12 +78,9 @@ public class AdminServiceImpl implements IAdminService {
 
 	// remove the employee data
 	@Override
-	public Employee removeEmployee(int employeeId,Employee employee) throws NoSuchEmployeeException {
-		if (employeeId != 0)
-			adminRepo.deleteById(employeeId);
-
-		else
-			throw new NoSuchEmployeeException("Employee is not there in database");
+	public Employee removeEmployee(int employeeId) throws NoSuchEmployeeException {
+		Employee employee = adminRepo.findById(employeeId).get();
+		adminRepo.deleteById(employeeId);
 		return employee;
 
 	}
