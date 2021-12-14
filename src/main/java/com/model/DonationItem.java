@@ -24,7 +24,8 @@ public class DonationItem implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "item_id")
-	private int itemId;
+	private int dItemId;
+	
 	@Column(name = "item_description")
 	private String itemDescription;
 
@@ -32,18 +33,18 @@ public class DonationItem implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private DonationType item;
 
-	// mapping to donation
-	@OneToOne(cascade = CascadeType.ALL)
-	private Donation donation;
+//	// mapping to donation
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private Donation donation;
 	
 
-	public Donation getDonation() {
-		return donation;
-	}
-
-	public void setDonation(Donation donation) {
-		this.donation = donation;
-	}
+//	public Donation getDonation() {
+//		return donation;
+//	}
+//
+//	public void setDonation(Donation donation) {
+//		this.donation = donation;
+//	}
 
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -51,35 +52,51 @@ public class DonationItem implements Serializable {
 	Donor donor;
 	// getters and setters
 
-	public int getItemId() {
-		return itemId;
-	}
+	
 
-	public void setItemId(int itemId) {
-		this.itemId = itemId;
-	}
-
-	public DonationType getItem() {
-		return item;
-	}
-
-	public void setItem(DonationType item) {
-		this.item = item;
-	}
+	
 
 	public String getItemDescription() {
 		return itemDescription;
 	}
 
+	
+
+	public int getdItemId() {
+		return dItemId;
+	}
+
+	public void setdItemId(int dItemId) {
+		this.dItemId = dItemId;
+	}
+
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
+	public DonationType getItem() {
+		return item;
+	}
+	public void setItem(DonationType item) {
+		this.item = item;
+	}
+	public Donor getDonor() {
+		return donor;
+	}
 
-	// to string
+	public void setDonor(Donor donor) {
+		this.donor = donor;
+	}
+
+	public DonationItem() {
+		super();
+		
+	}
+
 	@Override
 	public String toString() {
-		return "DonationItem [itemId=" + itemId + ", itemDescription=" + itemDescription + ", item=" + item
-				+ ", donation=" + donation + "]";
+		return "DonationItem [dItemId=" + dItemId + ", itemDescription=" + itemDescription + ", item=" + item
+				+ ", donor=" + donor + "]";
 	}
+
 
 }

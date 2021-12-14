@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.exception.DuplicateEmployeeException;
 import com.exception.NoSuchEmployeeException;
 import com.model.Donation;
+import com.model.Donor;
 import com.model.Employee;
+import com.service.IDonationItemService;
 import com.service.IDonationService;
 
 @RestController
@@ -28,6 +30,7 @@ public class DonationController {
 
 	@Autowired
 	IDonationService donationSer;
+	
 	
 	// add donation
 		@PostMapping("/donation/add")
@@ -42,6 +45,13 @@ public class DonationController {
 		public ResponseEntity<List<Donation>> getDonations() {
 			List<Donation> d = donationSer.getDonations();
 			ResponseEntity<List<Donation>> re = new ResponseEntity<List<Donation>>(d, HttpStatus.OK);
+			return re;
+		}
+		//get  employee address
+		@GetMapping("/donation/donor/{donorId}")
+		public ResponseEntity<Donation> getDonationDonorById(@PathVariable int donorId) {
+			Donation lcl = donationSer.getDonationDonorById(donorId);
+			ResponseEntity<Donation> re = new ResponseEntity<Donation>(lcl, HttpStatus.OK);
 			return re;
 		}
 		

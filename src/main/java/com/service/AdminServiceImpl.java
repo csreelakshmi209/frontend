@@ -40,7 +40,13 @@ public class AdminServiceImpl implements IAdminService {
 			emp.setEmail(employee.getEmail());
 			emp.setUsername(employee.getUsername());
 			emp.setPassword(employee.getPassword());
-			emp.setAddress(employee.getAddress());
+			
+			Address add=new Address();
+			add.setCity(employee.getAddress().getCity());
+			add.setState(employee.getAddress().getState());
+			add.setPin(employee.getAddress().getPin());
+			add.setLandmark(employee.getAddress().getLandmark());
+			
 			adminRepo.save(employee);
 		}
 		return employee;

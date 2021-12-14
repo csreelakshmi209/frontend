@@ -25,6 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.exception.DuplicateDonorException;
 import com.exception.NoSuchDonorException;
 import com.exception.NoSuchEmployeeException;
+import com.model.Address;
 import com.model.Donation;
 import com.model.Donor;
 import com.model.Employee;
@@ -48,10 +49,18 @@ public class DonorController {
 	}
 
 	// get all donors
-	@GetMapping("/donor/get")
+	@GetMapping("/donor")
 	public ResponseEntity<List<Donor>> getDonors() {
 		List<Donor> d = donorService.getDonors();
 		ResponseEntity<List<Donor>> re = new ResponseEntity<List<Donor>>(d, HttpStatus.OK);
+		return re;
+	}
+	
+	//get  employee address
+	@GetMapping("/donor/get/{donorId}")
+	public ResponseEntity<Donor> getDonorById(@PathVariable int donorId) {
+		Donor lcl = donorService.getDonorById(donorId);
+		ResponseEntity<Donor> re = new ResponseEntity<Donor>(lcl, HttpStatus.OK);
 		return re;
 	}
 

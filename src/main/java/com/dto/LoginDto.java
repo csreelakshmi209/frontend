@@ -14,6 +14,7 @@ public class LoginDto {
 	private String username;
 	private boolean isLoggedIn;
 	private String role;
+	
 	public String getUsername() {
 		return username;
 	}

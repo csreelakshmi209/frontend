@@ -11,4 +11,5 @@ public interface IDonationService {
 	public Donation updateDonation(int donationId, Donation donation) throws Exception ;
 	public Donation removeDonation(int donationId) ;
 	public List<Donation> getDonations();
+	public Donation getDonationDonorById(int donorId);
 }

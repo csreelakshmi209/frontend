@@ -25,13 +25,13 @@ public class DonationItemServiceImpl implements IDonationItemService {
 	// add method for item
 	@Override
 	public DonationItem addDonationItem(DonationItem donationItem) {
-		int id = donationItem.getItemId();
+		int id = donationItem.getdItemId();
 
 		DonationItem dItem = new DonationItem();
-		dItem.setItemId(donationItem.getItemId());
+		dItem.setdItemId(donationItem.getdItemId());
 		dItem.setItemDescription(donationItem.getItemDescription());
 		dItem.setItem(donationItem.getItem());
-		dItem.setDonation(donationItem.getDonation());
+		//dItem.setDonation(donationItem.getDonation());
 		donationItemRepo.save(donationItem);
 		return donationItem;
 	}
@@ -55,7 +55,7 @@ public class DonationItemServiceImpl implements IDonationItemService {
 		
 		d.setItem(donationItem.getItem());
 		d.setItemDescription(donationItem.getItemDescription());
-		d.setDonation(donationItem.getDonation());
+//		d.setDonation(donationItem.getDonation());
 		return donationItemRepo.save(d);
 	}
 

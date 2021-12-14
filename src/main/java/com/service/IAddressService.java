@@ -8,4 +8,5 @@ import com.model.Address;
 public interface IAddressService {
 	public Address getEmpAddressById(int addressId);
 	public Address getDonorAddressById(int addressId);
+	public Address addEmpAddress(Address address);
 }

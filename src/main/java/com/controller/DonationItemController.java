@@ -44,7 +44,7 @@ public class DonationItemController {
 		}
 		
 		//get  item by id
-		@GetMapping("/items/get/{itemId}")
+		@GetMapping("/items/donated/{itemId}")
 		public ResponseEntity<DonationItem> getdonationItemById(@PathVariable int itemId) {
 			DonationItem lcl = ditemService.getdonationItemById(itemId);
 			ResponseEntity<DonationItem> re = new ResponseEntity<DonationItem>(lcl, HttpStatus.OK);

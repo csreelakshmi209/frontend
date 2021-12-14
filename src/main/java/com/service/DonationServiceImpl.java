@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.exception.NoSuchEmployeeException;
+import com.model.Address;
 import com.model.Donation;
 import com.model.DonationItem;
 import com.model.Employee;
@@ -39,6 +40,12 @@ public class DonationServiceImpl implements IDonationService{
 			return e;
 		}
 
+		@Override
+		public Donation getDonationDonorById(int donorId) {
+			Optional<Donation> e = donationRepo.findById(donorId);
+			return e.get();
+			
+		}
 		// update the donation details
 		@Override
 		public Donation updateDonation(int donationId, Donation donation) {
@@ -63,5 +70,7 @@ public class DonationServiceImpl implements IDonationService{
 			return donation;
 			
 		}
+
+		
 
 }

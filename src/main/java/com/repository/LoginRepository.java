@@ -14,6 +14,6 @@ public interface LoginRepository extends JpaRepositoryImplementation<Login, Inte
 
 	Optional<Login> findByUsername(String username);
 
-	@Query(value="select * from login where user_id=:name", nativeQuery=true )
-	Optional<Login> findByUserNam(@Param("name") String name);
+//	@Query(value="select * from login where user_id=:username", nativeQuery=true )
+//	Optional<Login> findByUserNam(@Param("name") String username);
 }

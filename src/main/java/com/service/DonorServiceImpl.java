@@ -11,6 +11,7 @@ import com.repository.DonationRepository;
 import com.repository.DonorRepository;
 import com.exception.DuplicateDonorException;
 import com.exception.NoSuchDonorException;
+import com.model.Address;
 import com.model.Donation;
 import com.model.Donor;
 import com.model.Employee;
@@ -55,6 +56,12 @@ public class DonorServiceImpl implements IDonorService {
 	public List<Donor> getDonors() {
 		List<Donor> e = donorRepo.findAll();
 		return e;
+	}
+	
+	public Donor getDonorById(int donorId) {
+		Optional<Donor> e = donorRepo.findById(donorId);
+		return e.get();
+		
 	}
 	
 	//modify donor details
@@ -147,6 +154,7 @@ public class DonorServiceImpl implements IDonorService {
 		System.out.println("click here to get your the password");
 
 	}
+	
 	
 	
 
