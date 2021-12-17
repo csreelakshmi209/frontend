@@ -76,10 +76,6 @@ public class AdminServiceImpl implements IAdminService {
 	    emp.setUsername(employee.getUsername());
 	    emp.setPassword(employee.getPassword());
 	    emp.setAddress(employee.getAddress());
-	    
-		
-	    
-	    
 		return adminRepo.save (employee);
 	}
 

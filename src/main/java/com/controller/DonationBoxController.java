@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +37,7 @@ public class DonationBoxController {
 		}
 		
 		//get all employees
-		@GetMapping("/donationBox/get")
+		@GetMapping("/donationBox")
 		public ResponseEntity<List<DonationBox>> getDonationBox() {
 			List<DonationBox> lcl = idonationBoxSer.getDonationBox();
 			ResponseEntity<List<DonationBox>> re = new ResponseEntity<List<DonationBox>>(lcl, HttpStatus.OK);
@@ -45,10 +46,18 @@ public class DonationBoxController {
 		
 		// modify employee details
 		@PutMapping(path = "/donationBox/update/{registrationNumber}")
-		public ResponseEntity<Employee> modifyEmployee(@PathVariable("registrationNumber") int employeeId,@RequestBody Employee employee) throws NoSuchEmployeeException, Throwable  {
-			Employee e1 = idonationBoxSer.modifyEmployee(employeeId,employee);
+		public ResponseEntity<DonationBox> modifyBox(@PathVariable("registrationNumber") int registrationNumber,@RequestBody DonationBox donationBox)   {
+			DonationBox e1 = idonationBoxSer.modifyBox(registrationNumber,donationBox);
 
-			ResponseEntity<Employee> re = new ResponseEntity<Employee>(e1, HttpStatus.OK);
+			ResponseEntity<DonationBox> re = new ResponseEntity<DonationBox>(e1, HttpStatus.OK);
+			return re;
+		}
+		//delete employee details
+		@DeleteMapping(path = "/donationBox/remove/{registrationNumber}")
+		public ResponseEntity<DonationBox> removeBox(@PathVariable int registrationNumber)  {
+			DonationBox donationBox =idonationBoxSer.removeBox(registrationNumber);
+
+			ResponseEntity<DonationBox> re = new ResponseEntity<DonationBox>(HttpStatus.OK);
 			return re;
 		}
 }

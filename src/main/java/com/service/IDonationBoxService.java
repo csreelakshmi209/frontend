@@ -14,6 +14,11 @@ public interface IDonationBoxService {
 
 	public List<DonationBox> getDonationBox();
 
-	public Employee modifyEmployee(int employeeId, Employee employee);
+	public DonationBox modifyBox(int registrationNumber, DonationBox donationBox);
 
+	public DonationBox removeBox(int registrationNumber);
+
+	
+
+	
 }

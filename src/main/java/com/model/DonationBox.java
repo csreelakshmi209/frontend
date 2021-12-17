@@ -26,16 +26,16 @@ public class DonationBox implements Serializable{
 	private double totalCollection;
 	
 	// mapping to donation
-		@OneToOne(cascade = CascadeType.ALL)
-		@JoinColumn(name="donation_id")
-		private Donation donation;
+//		@OneToOne(cascade = CascadeType.ALL)
+//		@JoinColumn(name="donation_id")
+//		private Donation donation;
 		
-	public Donation getDonation() {
-			return donation;
-		}
-		public void setDonation(Donation donation) {
-			this.donation = donation;
-		}
+//	public Donation getDonation() {
+//			return donation;
+//		}
+//		public void setDonation(Donation donation) {
+//			this.donation = donation;
+//		}
 	public String getNgoName() {
 		return ngoName;
 	}
@@ -64,7 +64,8 @@ public class DonationBox implements Serializable{
 	@Override
 	public String toString() {
 		return "DonationBox [registrationNumber=" + registrationNumber + ", accountNumber=" + accountNumber
-				+ ", ngoName=" + ngoName + ", totalCollection=" + totalCollection + ", donation=" + donation + "]";
+				+ ", ngoName=" + ngoName + ", totalCollection=" + totalCollection + "]";
 	}
+	
 
 }

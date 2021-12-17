@@ -1,10 +1,12 @@
 package com.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.exception.NoSuchEmployeeException;
 import com.model.DonationBox;
 import com.model.Employee;
 import com.repository.DonationBoxRepository;
@@ -18,22 +20,36 @@ public class DonationBoxServiceImpl implements IDonationBoxService{
 	public DonationBox addDonationBox(DonationBox donationBox) {
 		
 		DonationBox box=new DonationBox();
+		box.setRegistrationNumber(donationBox.getRegistrationNumber());
 		box.setAccountNumber(donationBox.getAccountNumber());
 		box.setNgoName(donationBox.getNgoName());
 		box.setTotalCollection(donationBox.getTotalCollection());
-		box.setDonation(donationBox.getDonation());
 		boxrepo.save(donationBox);
 		return donationBox;
 	}
 	@Override
 	public List<DonationBox> getDonationBox() {
 		List<DonationBox> e = boxrepo.findAll();
-		return null;
+		return e;
 	}
 	@Override
-	public Employee modifyEmployee(int employeeId, Employee employee) {
-		// TODO Auto-generated method stub
-		return null;
+	public DonationBox modifyBox(int registrationNumber, DonationBox donationBox) {
+		Optional<DonationBox> optional = boxrepo.findById(registrationNumber);
+		
+		DonationBox box= optional.get();
+		box.setRegistrationNumber(donationBox.getRegistrationNumber());
+		box.setAccountNumber(donationBox.getAccountNumber());
+		box.setNgoName(donationBox.getNgoName());
+		box.setTotalCollection(donationBox.getTotalCollection());
+		
+		return boxrepo.save (donationBox);
 	}
+	@Override
+	public DonationBox removeBox(int registrationNumber) {
+		DonationBox donationBox = boxrepo.findById(registrationNumber).get();
+		boxrepo.deleteById(registrationNumber);
+		return donationBox;
 
+	}
+	
 }
