@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dto.EmployeeDto;
 import com.exception.DuplicateEmployeeException;
 import com.exception.NoSuchEmployeeException;
 import com.model.DonationBox;
@@ -36,7 +37,7 @@ public class DonationBoxController {
 			return new ResponseEntity<DonationBox>(emp, HttpStatus.CREATED);
 		}
 		
-		//get all employees
+		//get all 
 		@GetMapping("/donationBox")
 		public ResponseEntity<List<DonationBox>> getDonationBox() {
 			List<DonationBox> lcl = idonationBoxSer.getDonationBox();

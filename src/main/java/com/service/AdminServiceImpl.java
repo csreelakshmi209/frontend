@@ -15,6 +15,7 @@ import com.exception.NoSuchEmployeeException;
 import com.model.Address;
 import com.model.DonationDistribution;
 import com.model.Employee;
+import com.model.Login;
 
 @Service
 public class AdminServiceImpl implements IAdminService {
@@ -47,6 +48,12 @@ public class AdminServiceImpl implements IAdminService {
 			add.setPin(employee.getAddress().getPin());
 			add.setLandmark(employee.getAddress().getLandmark());
 			
+			Login login=new Login();
+			login.setUsername(employee.getLogin().getUsername());
+			login.setRole(employee.getLogin().getRole());
+			login.setPassword(employee.getLogin().getPassword());
+			emp.setLogin(login);
+
 			adminRepo.save(employee);
 		}
 		return employee;

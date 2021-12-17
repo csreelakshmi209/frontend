@@ -24,12 +24,12 @@ public class Admin implements Serializable{
 	@Column(name="admin_id")
 	private int adminId;
 	@NotNull
-	@Column(name="username")
-	private String username;
+	@Column(name="admin_username")
+	private String adminUsername;
 	@NotNull
 	@Size(min=8,message="password should have atleast 8 characters")
-	@Column(name="password")
-	private String password;
+	@Column(name="admin_password")
+	private String adminPassword;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="login")
@@ -49,22 +49,23 @@ public class Admin implements Serializable{
 	public void setAdminId(int adminId) {
 		this.adminId = adminId;
 	}
-	public String getUsername() {
-		return username;
+	
+	public String getAdminUsername() {
+		return adminUsername;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setAdminUsername(String adminUsername) {
+		this.adminUsername = adminUsername;
 	}
-	public String getPassword() {
-		return password;
+	public String getAdminPassword() {
+		return adminPassword;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setAdminPassword(String adminPassword) {
+		this.adminPassword = adminPassword;
 	}
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", username=" + username + ", password=" + password + ", login=" + login
-				+ "]";
+		return "Admin [adminId=" + adminId + ", adminUsername=" + adminUsername + ", adminPassword=" + adminPassword
+				+ ", login=" + login + "]";
 	}
 	
 

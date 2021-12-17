@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dto.EmployeeDto;
 import com.exception.DuplicateEmployeeException;
 import com.exception.NoSuchEmployeeException;
+import com.model.Admin;
 import com.model.DonationDistribution;
 import com.model.Employee;
 @Service
@@ -20,6 +21,7 @@ public interface IAdminService {
 	public Employee findEmployeeByName(String name) throws NoSuchEmployeeException;
 	public boolean approveDonation(DonationDistribution distribution);
 	List<Employee> getEmployees();
+	
 	
 	
 

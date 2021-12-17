@@ -31,14 +31,18 @@ public class Login {
 	private boolean isLoggedIn = false;
 	
 	@JsonIgnore
+	@OneToOne(mappedBy="login")
+	private Admin admin;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "employee_id")
-//	private Employee employee;
-	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "admin_id")
-//	private Admin admin;
+
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
 	public int getLoginId() {
 		return loginId;
@@ -91,7 +95,7 @@ public class Login {
 	@Override
 	public String toString() {
 		return "Login [loginId=" + loginId + ", username=" + username + ", password=" + password + ", role=" + role
-				+ ", isLoggedIn=" + isLoggedIn + "]";
+				+ ", isLoggedIn=" + isLoggedIn + ", admin=" + admin + "]";
 	}
 	
 	
