@@ -60,10 +60,7 @@ public class AdminServiceImpl implements IAdminService {
 		return e;
 	}
 	
-	
-
 	// update the employee details
-
 	@Override
 	public Employee modifyEmployee(int employeeId,Employee employee) throws Throwable {
 		
@@ -76,10 +73,14 @@ public class AdminServiceImpl implements IAdminService {
 		emp.setEmployeeName(employee.getEmployeeName());
 		emp.setPhone(employee.getPhone());
 		emp.setEmail(employee.getEmail());
-	    emp.setUsername(emp.getUsername());
+	    emp.setUsername(employee.getUsername());
 	    emp.setPassword(employee.getPassword());
+	    emp.setAddress(employee.getAddress());
 	    
-		return adminRepo.save (emp);
+		
+	    
+	    
+		return adminRepo.save (employee);
 	}
 
 	// remove the employee data

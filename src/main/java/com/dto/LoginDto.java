@@ -6,9 +6,6 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-
-
 public class LoginDto {
 
 	private String username;

@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -11,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.dto.LoginDto;
 import com.exception.InvalidCredentialsException;
+import com.model.Employee;
 import com.model.Login;
 import com.repository.LoginRepository;
 
@@ -64,6 +66,12 @@ public class LoginServiceImpl implements ILoginService{
 		LoginDto loginDto = new LoginDto();
 		loginDto.setLoggedIn(false);
 		return loginDto;
+	}
+
+	@Override
+	public List<LoginDto> getlogindetails() {
+		List<Login> e = loginRepo.findAll();
+		return null;
 	}
 
 

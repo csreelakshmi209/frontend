@@ -9,4 +9,5 @@ public interface IAddressService {
 	public Address getEmpAddressById(int addressId);
 	public Address getDonorAddressById(int addressId);
 	public Address addEmpAddress(Address address);
+	Address modifyEmpAddress(int addressId, Address address);
 }

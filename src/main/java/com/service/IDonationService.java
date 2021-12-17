@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.exception.NoSuchEmployeeException;
 import com.model.Donation;
+import com.model.Donor;
 import com.model.Employee;
 
 public interface IDonationService {

@@ -10,6 +10,7 @@ import com.exception.NoSuchEmployeeException;
 import com.model.Address;
 import com.model.Donation;
 import com.model.DonationItem;
+import com.model.Donor;
 import com.model.Employee;
 import com.repository.DonationRepository;
 
@@ -22,10 +23,11 @@ public class DonationServiceImpl implements IDonationService{
 	public Donation addDonation(Donation donation) {
 		
 		Donation d=new Donation();
+		d.setDonationId(donation.getDonationId());
 		d.setDonor(donation.getDonor());
 		d.setDonationAmount(donation.getDonationAmount());
-		d.setItem(donation.getItem());
 		d.setDonationDate(donation.getDonationDate());
+		d.setItem(donation.getItem());
 		donationRepo.save(donation);
 		
 		return donation;

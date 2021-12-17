@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.dto.LoginDto;
 import com.exception.InvalidCredentialsException;
+import com.model.Employee;
 import com.model.Login;
 import com.service.ILoginService;
 
@@ -33,8 +36,6 @@ public class LoginController {
 		LoginDto dto = loginService.login(login);
 		return new ResponseEntity<>(dto, HttpStatus.OK);
 	}
-	
-	
 	@PatchMapping("/logout/{username}")
 	public ResponseEntity<LoginDto> logout(@PathVariable("username") String username) throws InvalidCredentialsException  {
 		logger.info(username);

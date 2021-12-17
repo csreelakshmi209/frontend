@@ -50,8 +50,6 @@ public class Donor implements Serializable {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	
-	@OneToMany
-	List<DonationItem> donationitems;
 	
 	//default constructor
 	public Donor() {}

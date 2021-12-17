@@ -73,7 +73,7 @@ class DonorServiceTest {
 		dn.setDonationId(101);
 		dn.setDonationAmount(50000);
 		DonationItem di = new DonationItem();
-		di.setItemId(1);
+		di.setdItemId(1);
 		di.setItemDescription("cloth");
 		dn.setItem(di);
 		Mockito.when(donationRepository.save(dn)).thenReturn(dn);

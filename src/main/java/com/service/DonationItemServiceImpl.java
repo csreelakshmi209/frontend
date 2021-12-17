@@ -30,7 +30,7 @@ public class DonationItemServiceImpl implements IDonationItemService {
 		DonationItem dItem = new DonationItem();
 		dItem.setdItemId(donationItem.getdItemId());
 		dItem.setItemDescription(donationItem.getItemDescription());
-		dItem.setItem(donationItem.getItem());
+		dItem.setDonationType(donationItem.getDonationType());
 		//dItem.setDonation(donationItem.getDonation());
 		donationItemRepo.save(donationItem);
 		return donationItem;
@@ -52,8 +52,7 @@ public class DonationItemServiceImpl implements IDonationItemService {
 		
 		DonationItem d = optional.get();
 
-		
-		d.setItem(donationItem.getItem());
+		d.setDonationType(donationItem.getDonationType());
 		d.setItemDescription(donationItem.getItemDescription());
 //		d.setDonation(donationItem.getDonation());
 		return donationItemRepo.save(d);

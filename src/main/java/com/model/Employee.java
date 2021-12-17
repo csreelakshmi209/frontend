@@ -47,6 +47,19 @@ public class Employee implements Serializable {
 	@JoinColumn(name = "address_id")
 	private Address address;
 
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="login")
+	private Login login;
+	
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
+	}
+
 	// getters and setters
 	public int getEmployeeId() {
 		return employeeId;
@@ -104,7 +117,6 @@ public class Employee implements Serializable {
 		this.password = password;
 	}
 
-	// to string
 	@Override
 	public String toString() {
 		return "Employee [employeeId=" + employeeId + ", employeeName=" + employeeName + ", email=" + email + ", phone="

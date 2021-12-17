@@ -47,6 +47,11 @@ public class DonorServiceImpl implements IDonorService {
 			d.setDonorUsername(donor.getDonorUsername());
 			d.setDonorPassword(donor.getDonorPassword());
 			
+			Address add=new Address();
+			add.setCity(donor.getAddress().getCity());
+			add.setState(donor.getAddress().getState());
+			add.setPin(donor.getAddress().getPin());
+			add.setLandmark(donor.getAddress().getLandmark());
 			donorRepo.save(donor);
 		}
 		return donor;
@@ -78,8 +83,8 @@ public class DonorServiceImpl implements IDonorService {
 		d.setDonorPhone(donor.getDonorPhone());
 		d.setDonorUsername(donor.getDonorUsername());
 		d.setDonorPassword(donor.getDonorPassword());
-		
-	   	return donorRepo.save (d);
+		d.setAddress(donor.getAddress());
+	   	return donorRepo.save (donor);
 		
 	}
 	

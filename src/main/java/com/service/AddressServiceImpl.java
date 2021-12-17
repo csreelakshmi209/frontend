@@ -3,6 +3,8 @@ package com.service;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.exception.NoSuchEmployeeException;
 import com.model.Address;
 import com.model.Employee;
 import com.repository.AddressRepository;
@@ -39,8 +41,20 @@ public class AddressServiceImpl implements IAddressService{
 			a.setPin(address.getPin());
 			a.setLandmark(address.getLandmark());
 			
-			addrepo.save(address);
-			return address;
+			
+			return addrepo.save(address);
+		}
+		@Override
+		public Address modifyEmpAddress(int addressId, Address address) {
+			Optional<Address> optional = addrepo.findById(addressId);
+			
+			Address add=optional.get();
+			
+			add.setCity(address.getCity());
+			add.setState(address.getState());
+			add.setPin(address.getPin());
+			add.setLandmark(address.getLandmark());
+			return addrepo.save(address);
 		}
 	
 }

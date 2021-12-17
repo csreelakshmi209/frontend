@@ -31,7 +31,7 @@ public class DonationItem implements Serializable {
 
 	// enum mapping to donationType
 	@Enumerated(EnumType.STRING)
-	private DonationType item;
+	private DonationType donationType;
 
 //	// mapping to donation
 //	@OneToOne(cascade = CascadeType.ALL)
@@ -47,9 +47,6 @@ public class DonationItem implements Serializable {
 //	}
 
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "donor_id", referencedColumnName = "donor_id")
-	Donor donor;
 	// getters and setters
 
 	
@@ -73,19 +70,20 @@ public class DonationItem implements Serializable {
 	public void setItemDescription(String itemDescription) {
 		this.itemDescription = itemDescription;
 	}
-	public DonationType getItem() {
-		return item;
-	}
-	public void setItem(DonationType item) {
-		this.item = item;
-	}
-	public Donor getDonor() {
-		return donor;
+	
+
+
+	public DonationType getDonationType() {
+		return donationType;
 	}
 
-	public void setDonor(Donor donor) {
-		this.donor = donor;
+
+
+	public void setDonationType(DonationType donationType) {
+		this.donationType = donationType;
 	}
+
+
 
 	public DonationItem() {
 		super();
@@ -94,8 +92,8 @@ public class DonationItem implements Serializable {
 
 	@Override
 	public String toString() {
-		return "DonationItem [dItemId=" + dItemId + ", itemDescription=" + itemDescription + ", item=" + item
-				+ ", donor=" + donor + "]";
+		return "DonationItem [dItemId=" + dItemId + ", itemDescription=" + itemDescription + ", donationType="
+				+ donationType + "]";
 	}
 
 

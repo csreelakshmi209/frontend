@@ -32,9 +32,13 @@ public class Login {
 	
 	@JsonIgnore
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "employee_id")
-	private Employee employee;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "employee_id")
+//	private Employee employee;
+	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name = "admin_id")
+//	private Admin admin;
 
 	public int getLoginId() {
 		return loginId;
@@ -76,18 +80,18 @@ public class Login {
 		this.isLoggedIn = isLoggedIn;
 	}
 
-	public Employee getEmployee() {
-		return employee;
-	}
-
-	public void setEmployee(Employee employee) {
-		this.employee = employee;
-	}
+//	public Employee getEmployee() {
+//		return employee;
+//	}
+//
+//	public void setEmployee(Employee employee) {
+//		this.employee = employee;
+//	}
 
 	@Override
 	public String toString() {
 		return "Login [loginId=" + loginId + ", username=" + username + ", password=" + password + ", role=" + role
-				+ ", isLoggedIn=" + isLoggedIn + ", employee=" + employee + "]";
+				+ ", isLoggedIn=" + isLoggedIn + "]";
 	}
 	
 	
