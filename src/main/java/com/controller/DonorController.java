@@ -42,7 +42,7 @@ public class DonorController {
 	DonorRepository donorRepo;
 
 	// donor registration
-	@PostMapping("/donor/add")
+	@PostMapping("/addDonor")
 	public ResponseEntity<Donor> registerDonor(@Valid @RequestBody Donor donor) throws DuplicateDonorException, SQLException {
 		Donor p = donorService.registerDonor(donor);
 		return new ResponseEntity<Donor>(p, HttpStatus.CREATED);
@@ -57,7 +57,7 @@ public class DonorController {
 	}
 	
 	//get  employee address
-	@GetMapping("/donor/get/{donorId}")
+	@GetMapping("/donor/id/{donorId}")
 	public ResponseEntity<Donor> getDonorById(@PathVariable int donorId) {
 		Donor lcl = donorService.getDonorById(donorId);
 		ResponseEntity<Donor> re = new ResponseEntity<Donor>(lcl, HttpStatus.OK);

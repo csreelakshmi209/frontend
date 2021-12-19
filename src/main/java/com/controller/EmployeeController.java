@@ -2,8 +2,6 @@ package com.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,49 +14,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model.NeedyPeople;
-import com.service.EmployeeServiceImpl;
+import com.service.IEmployeeService;
+import com.service.INeedyPeopleService;
 
 @RestController
+@RequestMapping(path="/needy")
 public class EmployeeController {
 
 	@Autowired
-	EmployeeServiceImpl empService;
-
-	//welcome note
-	@RequestMapping("needyPerson/hello")
-	public String helloAdmin() {
-		String msg = "Welcome to NeedyPeople services";
-		return msg;
+	IEmployeeService empService;
+	
+	@Autowired
+	INeedyPeopleService needService;
+	
+	@PostMapping("/addNeedyPerson")
+	public ResponseEntity<NeedyPeople> addNeedyPerson(@RequestBody NeedyPeople person) {
+		NeedyPeople p=empService.addNeedyPerson(person);
+		return new ResponseEntity<>(p,HttpStatus.CREATED);
 	}
-	//add needy person
-	@PostMapping("needyPerson/add")
-	public ResponseEntity<NeedyPeople> addNeedyPerson(@Valid @RequestBody NeedyPeople person) {
-		NeedyPeople p = empService.addNeedyPerson(person);
-		return new ResponseEntity<>(p, HttpStatus.CREATED);
-	}
-
-	//delete needy person
-	@DeleteMapping(path = "needyPerson/delete")
-	public ResponseEntity<NeedyPeople> deleteNeedyPerson(@RequestBody NeedyPeople person) {
+	
+	@DeleteMapping(path="/deleteNeedyPerson")
+	public ResponseEntity<String> deleteNeedyPerson(@RequestBody NeedyPeople person) {
 		empService.removeNeedyPerson(person);
-		ResponseEntity<NeedyPeople> re = new ResponseEntity<NeedyPeople>(HttpStatus.OK);
+		ResponseEntity re=new ResponseEntity<String>("Deleted",HttpStatus.OK);
 		return re;
 	}
-
-	//get needy person by using id
-	@GetMapping(path = "needyPerson/getById/{id}")
-	public ResponseEntity<NeedyPeople> getNeedyPeopleById(@PathVariable("id") int id) {
-		NeedyPeople p = empService.findNeedyPeopleById(id);
+	
+	@GetMapping(path="/getNeedyPeopleById/{id}")
+	public ResponseEntity<NeedyPeople> getNeedyPeopleById(@PathVariable("id")  int id) {
+		NeedyPeople p=empService.findNeedyPeopleById(id);
 		return new ResponseEntity<NeedyPeople>(p, HttpStatus.OK);
 	}
-	//get needy person by name
+	
 	@GetMapping(path = "/needyPeople/getByName/{name}")
-	public ResponseEntity<NeedyPeople> getNeedyPeopleByName(@PathVariable("name") String name) {
+	public ResponseEntity<NeedyPeople> findNeedyPeopleByName(@PathVariable("name") String name) {
 		NeedyPeople n = empService.findNeedyPeopleByName(name);
 		return new ResponseEntity<NeedyPeople>(n, HttpStatus.OK);
 	}
-	//get all needy people
-	@GetMapping(path = "/needyPeople/getAll")
+	
+	@GetMapping(path="/getAllNeedyPeople")
 	public ResponseEntity<List<NeedyPeople>> getAllNeedyPeople() {
 		return new ResponseEntity<List<NeedyPeople>>(empService.findAllNeedyPeople(), HttpStatus.OK);
 	}

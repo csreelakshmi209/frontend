@@ -48,11 +48,11 @@ public class AdminServiceImpl implements IAdminService {
 			add.setPin(employee.getAddress().getPin());
 			add.setLandmark(employee.getAddress().getLandmark());
 			
-			Login login=new Login();
-			login.setUsername(employee.getLogin().getUsername());
-			login.setRole(employee.getLogin().getRole());
-			login.setPassword(employee.getLogin().getPassword());
-			emp.setLogin(login);
+//			Login login=new Login();
+//			login.setUsername(employee.getLogin().getUsername());
+//			login.setRole(employee.getLogin().getRole());
+//			login.setPassword(employee.getLogin().getPassword());
+//			emp.setLogin(login);
 
 			adminRepo.save(employee);
 		}
